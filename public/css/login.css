@@ -13,12 +13,20 @@ body{
     width: 450px;
     margin: 30px auto;
 }
+#login_logo {
+    margin-top: 30px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 425px;
+    height: 92px;
+}
 
 .signup,
 .login{
     width: 50%;
     background: #fff;
-    color: #34b3a0;
+    color: #022950;
     font-size: 130%;
     float: left;
     height: 60px;
@@ -50,7 +58,7 @@ body{
 }
 
 .input:focus{
-    border: 2px solid #34b3a0;
+    border: 2px solid #022950;
 }
 #pass_tip{
     margin-top: -25px;
@@ -66,7 +74,7 @@ body{
 
 .btn{
     width: 100%;
-    background: #34b3a0;
+    background: #022950;
     height: 60px;
     text-align: center;
     line-height: 50px;

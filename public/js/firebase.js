@@ -1,13 +1,13 @@
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyBGpmOJvCRxU8DMTaSsDgZt8NrdpKnLSoI",
-    authDomain: "campabilities-pwa.firebaseapp.com",
-    databaseURL: "https://campabilities-pwa.firebaseio.com",
-    projectId: "campabilities-pwa",
-    storageBucket: "campabilities-pwa.appspot.com",
-    messagingSenderId: "920688985025",
-    appId: "1:920688985025:web:2d9258ebfd4b63ed9fa540",
-    measurementId: "G-QWK71H69BX"
+    apiKey: "AIzaSyDQdQmLlxQlGbTKOPq8ZrjJyIwz7F7n3IY",
+    authDomain: "roflex-d529d.firebaseapp.com",
+    databaseURL: "https://roflex-d529d.firebaseio.com",
+    projectId: "roflex-d529d",
+    storageBucket: "roflex-d529d.appspot.com",
+    messagingSenderId: "184821631971",
+    appId: "1:184821631971:web:ea0f73ce7b2459dbde6ed6",
+    measurementId: "G-7E8DF98YB1"
 };
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
