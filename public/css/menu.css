@@ -1,0 +1,13 @@
+body{
+    font-size: 100%;
+}
+#menu-user {
+    font-size: 1.75em;
+    text-align: center;
+    padding-top: 40px;
+    padding-bottom: 40px;
+    font-family: "Lucida Console";
+}
+#menu-signout{
+    background-color: firebrick;
+}

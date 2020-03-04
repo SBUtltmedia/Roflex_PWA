@@ -52,12 +52,6 @@ function passSignOnChange() {
         $("#pass_tip").show();
     }
 }
-function splashscreen() {
-    window.location.href = "./pages/menu.html";
-}
-function signscreen() {
-    window.location.href = "./index.html";
-}
 let user = firebase.auth().currentUser;
 if(user) {
     splashscreen();
