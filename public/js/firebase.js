@@ -16,10 +16,10 @@ console.log("Firebase has successfully loaded");
 
 // This sections contains all of the page switches
 function splashscreen() {
-    window.location.href = "./pages/menu.html";
+    window.location.replace("./pages/menu.html");
 }
 function signscreen() {
-    window.location.href = "../index.html";
+    window.location.replace("../index.html");
 }
 
 // This section contains all of the queries
