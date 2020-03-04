@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <title>Roflex PWA</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css" id="bootstrap-css">
-    <link rel="stylesheet" href="../css/login.css">
-    <link rel="stylesheet" href="../css/menu.css">
+    <link rel="stylesheet" href="../css/bluetooth.css">
     <script src="../js/bootstrap.min.js"></script>
     <script src="../js/jquery-3.4.1.min.js"></script>
     <!-- Firebase App (the core Firebase SDK) is always required and must be listed first -->
@@ -23,6 +22,25 @@
     <script src="https://www.gstatic.com/firebasejs/7.9.1/firebase-analytics.js"></script>
 </head>
 <body>
-
+    <div id="bluetooth-scan">
+        <div id="bluetooth-header"> Bluetooth - Scan for Devices</div>
+        <table class="table">
+            <thead class="thead-dark">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Profile</th>
+                <th scope="col"></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <th scope="row">1</th>
+                <td>Mark</td>
+                <td>Otto</td>
+            </tr>
+            </tbody>
+        </table>
+        <button type="button" class="btn btn-secondary btn-lg" id="bluetooth-return" onclick="splashscreen()">Back to Menu</button>
+    </div>
 </body>
 </html>
