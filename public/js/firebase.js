@@ -12,7 +12,6 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-console.log("Firebase has successfully loaded");
 firebase.firestore().enablePersistence()
     .catch(function(err) {
         if (err.code == 'failed-precondition') {
@@ -21,6 +20,12 @@ firebase.firestore().enablePersistence()
             document.getElementById("app-warning").innerHTML = "The browser that you are using does not support offline";
         }
     });
+firebase.auth().onAuthStateChanged(function(user) {
+    if (user) {
+        loadMenu();
+    }
+});
+console.log("Firebase has successfully loaded");
 // This section contains all of the queries
 /**
  * This Function returns a JSON object for user data

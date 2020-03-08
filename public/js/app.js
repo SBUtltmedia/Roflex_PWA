@@ -1,9 +1,11 @@
-// Check if a service worker is supported by the browser
-// if('serviceWorker' in navigator) {
-//     navigator.serviceWorker.register('/sw.js')
-//         .then(()=> console.log("Service worker registered successful!"))
-//         .catch(()=> console.log("Service worked was not able to be registered"));
-// }
+//Check if a service worker is supported by the browser
+if('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('./sw.js')
+        .then(()=> console.log("Service worker registered successful!"))
+        .catch(function(error) {
+            console.log("Service worker was not able to be registered with error: " + error.message);
+        });
+}
 
 // This sections contains all of the page switches
 function loadMenu() {
