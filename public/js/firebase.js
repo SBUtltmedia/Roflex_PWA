@@ -13,15 +13,14 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 console.log("Firebase has successfully loaded");
-
-// This sections contains all of the page switches
-function splashscreen() {
-    window.location.replace("./pages/menu.html");
-}
-function signscreen() {
-    window.location.replace("../index.html");
-}
-
+firebase.firestore().enablePersistence()
+    .catch(function(err) {
+        if (err.code == 'failed-precondition') {
+            alert("More than 1 tab is open for this app. Only one of the apps can be accessed offline at a time!");
+        } else if (err.code == 'unimplemented') {
+            document.getElementById("app-warning").innerHTML = "The browser that you are using does not support offline";
+        }
+    });
 // This section contains all of the queries
 /**
  * This Function returns a JSON object for user data
@@ -39,12 +38,22 @@ function getUserInfo() {
 
 function signIn(email, password){
     console.log("Attempting to sign in");
-    firebase.auth().signInWithEmailAndPassword(email, password)
-        .then(() => {
-            localStorage.setItem("user", JSON.stringify(getUserInfo()));
-            splashscreen();
+    firebase.auth().setPersistence(firebase.auth.Auth.Persistence.LOCAL)
+        .then(function() {
+            firebase.auth().signInWithEmailAndPassword(email, password)
+                .then(() => {
+                    localStorage.setItem("user", JSON.stringify(getUserInfo()));
+                    console.log("Attempting to load menu");
+                    loadMenu();
+                })
+                .catch(function (error) {
+                    $(".btn").show();
+                    $(".loader").hide();
+                    document.getElementById("login_error").innerHTML = error.message;
+                    $("#login_error").show();
+                });
         })
-        .catch(function (error) {
+        .catch(function(error) {
             $(".btn").show();
             $(".loader").hide();
             document.getElementById("login_error").innerHTML = error.message;
@@ -102,11 +111,11 @@ function signup() {
 function signout() {
     firebase.auth().signOut().then(function() {
         localStorage.clear();
-        signscreen();
+        loadLogin();
         console.log("User has signed out successfully");
     }).catch(function(error) {
         localStorage.clear();
-        signscreen();
+        loadLogin();
         console.log(error.message + " with error code : " + error.code);
     });
 }

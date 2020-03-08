@@ -54,5 +54,7 @@ function passSignOnChange() {
 }
 let user = firebase.auth().currentUser;
 if(user) {
-    splashscreen();
+    loadLogin();
+} else {
+    console.log("No local user detected. Please login!");
 }
