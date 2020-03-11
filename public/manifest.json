@@ -1,6 +1,6 @@
 {
-  "name": "Campabilities",
-  "short_name": "Campabilities",
+  "name": "Roflex-PWA",
+  "short_name": "Roflex-PWA",
   "start_url": "/index.html",
   "display": "standalone",
   "background_color": "#e4feb4",
