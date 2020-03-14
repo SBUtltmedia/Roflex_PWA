@@ -9,7 +9,6 @@
     "source": "functions"
   },
   "hosting": {
-    "site": "roflex-pwa",
     "public": "public",
     "ignore": [
       "firebase.json",
@@ -39,5 +38,9 @@
     "pubsub": {
       "port": 8085
     }
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
   }
 }

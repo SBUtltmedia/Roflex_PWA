@@ -12,7 +12,8 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
-firebase.firestore().enablePersistence()
+const db = firebase.firestore();
+db.enablePersistence()
     .catch(function(err) {
         if (err.code == 'failed-precondition') {
             alert("More than 1 tab is open for this app. Only one of the apps can be accessed offline at a time!");
@@ -25,19 +26,34 @@ firebase.auth().onAuthStateChanged(function(user) {
         loadMenu();
     }
 });
+/**
+ * This function returns a JSON Object for adding a user to the "users" collection
+ * @param {*} email The email of the user. Cannot be a duplicate of an email already in use.
+ */
+function generateUser(email, name){
+    return {
+        email: email,
+        birthdate : firebase.firestore.Timestamp.fromDate(Date.parse('01 Jan 1970 00:00:00 GMT')), //Needs to be implemented
+        creationDate : firebase.firestore.Timestamp.now(),
+        firstName: name,
+        lastName : "Null", // Needs to be implemented with field
+        gender: "Female" // Needs to be implemented with field`
+    };   
+}
 console.log("Firebase has successfully loaded");
+
 // This section contains all of the queries
 /**
  * This Function returns a JSON object for user data
  * The User data that is currently available is : email,
- * @returns {{email}}
+ * @returns {{email, name}}
  */
 function getUserInfo() {
     let user = firebase.auth().currentUser;
     if (user != null) {
-        return {"email": user.email, "name": user.displayName};
+        return {email: user.email, name: user.displayName};
     } else {
-        return {"email": "error loading user", "name": "error loading user"};
+        return {email: "error loading user", name: "error loading user"};
     }
 }
 
@@ -47,7 +63,6 @@ function signIn(email, password){
         .then(function() {
             firebase.auth().signInWithEmailAndPassword(email, password)
                 .then(() => {
-                    localStorage.setItem("user", JSON.stringify(getUserInfo()));
                     console.log("Attempting to load menu");
                     loadMenu();
                 })
@@ -95,13 +110,22 @@ function signup() {
     } else {
         $(".btn").hide();
         $(".loader").show();
+        console.log("User signup sucessful!");
         firebase.auth().createUserWithEmailAndPassword(email, password)
             .then(() => {
+                console.log("Attempting to register user into DB");
+                db.collection("user").add(generateUser(email, name)).then(function(docRef){
+                    console.log("Added User info for " + email + " successfully with ID : " + docRef.id);
+                }).catch(function(err){
+                    console.log(err.message);
+                });
                 firebase.auth().currentUser.updateProfile({
                     displayName: name,
                 }).then(function() {
+                    console.log("Updated user display name successfully!");
                     signIn(email, password);
                 }).catch(function(error) {
+                    console.log(error.message);
                     signIn(email, password);
                 });
             })

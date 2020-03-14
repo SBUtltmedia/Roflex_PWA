@@ -23,7 +23,7 @@ function loadMenu() {
 
     // Grabbing name / local data needs to be changed to firebase implementation
     try {
-        document.getElementById("menu-user").innerHTML = "Welcome " + JSON.parse(localStorage.getItem('user'))['name'];
+        document.getElementById("menu-user").innerHTML = "Welcome " + getUserInfo()["name"];
     } catch (e) {
         document.getElementById("menu-user").innerHTML = e.message;
     }
