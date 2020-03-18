@@ -1,3 +1,5 @@
+// Selected device object cache
+let deviceCache = null;
 // Characteristic object cache
 let characteristicCache = null;
 
@@ -16,7 +18,7 @@ function scanDevices(){
 function requestBluetoothDevice() {
     console.log('Requesting bluetooth device...');
     return navigator.bluetooth.requestDevice({
-        filters: [{services: [0xFFE0]}],
+        acceptAllDevices: true // Needs to be changed to be Roflex specific in the future.
     }).
     then(device => {
         console.log('"' + device.name + '" bluetooth device selected');

@@ -84,7 +84,8 @@ function loadLogin(){
 function loadBluetooth() {
     let block = "    <div id=\"bluetooth-scan\">\n" +
         "        <div id=\"bluetooth-header\">Bluetooth</div>" +
-        "        <button type=\"button\" class=\"btn btn-secondary btn-lg\" id=\"bluetooth-scan\" onclick=\"scanDevices()\">Scan for Devices</button>" +
+        "        <button type=\"button\" class=\"btn btn-secondary btn-lg\" id=\"bluetooth-scan\" onclick=\"scanDevices()\">Scan for Devices</button><br>" +
+        "        <button type=\"button\" class=\"btn btn-secondary btn-lg\" id=\"bluetooth-scan\" onclick=\"disconnect()\">Disconnect from Device</button><br>" +
         "        <button type=\"button\" class=\"btn btn-secondary btn-lg\" id=\"bluetooth-return\" onclick=\"loadMenu()\">Back to Menu</button>\n" +
         "    </div>";
     document.getElementById("app").innerHTML = block;
