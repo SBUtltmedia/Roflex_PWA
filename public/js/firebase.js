@@ -12,6 +12,7 @@ const firebaseConfig = {
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
+let provider = new firebase.auth.GoogleAuthProvider();
 const db = firebase.firestore();
 db.enablePersistence()
     .catch(function(err) {
@@ -21,6 +22,7 @@ db.enablePersistence()
             document.getElementById("app-warning").innerHTML = "The browser that you are using does not support offline";
         }
     });
+
 firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
         loadMenu();
@@ -139,12 +141,35 @@ function signup() {
 }
 function signout() {
     firebase.auth().signOut().then(function() {
-        localStorage.clear();
         loadLogin();
         console.log("User has signed out successfully");
     }).catch(function(error) {
-        localStorage.clear();
         loadLogin();
         console.log(error.message + " with error code : " + error.code);
+    });
+}
+function googleSignIn(){
+    $(".btn").hide();
+    $(".loader").show();
+    firebase.auth().signInWithPopup(provider).then(function(result) {
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        let token = result.credential.accessToken;
+        // The signed-in user info.
+        let user = result.user;
+        // Not using all of the fields above yet
+        loadMenu();
+    }).catch(function(error) {
+        $(".btn").show();
+        $(".loader").hide();
+        // Handle Errors here.
+        let errorCode = error.code;
+        let errorMessage = error.message;
+        // The email of the user's account used.
+        let email = error.email;
+        // The firebase.auth.AuthCredential type that was used.
+        let credential = error.credential;
+        // Not using all of the fields yet
+        document.getElementById("pass_error").innerHTML = errorMessage;
+        $("#pass_error").show();
     });
 }

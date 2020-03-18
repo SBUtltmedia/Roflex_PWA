@@ -17,14 +17,21 @@
     text-transform: uppercase;
 }
 
-.signup-form,
-.login-form{
+.signup-form{
     background: #fff;
     padding: 40px;
     clear: both;
     width: 100%;
     box-sizing: border-box;
     height: 400px;
+}
+.login-form{
+    background: #fff;
+    padding: 40px;
+    clear: both;
+    width: 100%;
+    box-sizing: border-box;
+    height: 450px;
 }
 .input{
     width: 100%;
@@ -52,7 +59,9 @@
     text-align: center;
     color: #dc3545;
 }
-
+#google-button {
+    color: white;
+}
 .btn{
     width: 100%;
     background: #022950;

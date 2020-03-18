@@ -30,27 +30,30 @@ function loadMenu() {
 }
 function loadLogin(){
     // Change the sign in page
-    let block =
-        "        <div class=\"login\">Log In</div>\n" +
-        "        <div class=\"signup\">Sign Up</div>\n" +
+    let block ="            <div class=\"login\">Log In</div>\n" +
+        "            <div class=\"signup\">Sign Up</div>\n" +
         "\n" +
-        "        <div class=\"login-form\">\n" +
-        "          <input type=\"text\" onkeydown=\"hideLoginError()\" placeholder=\"Email\" class=\"input\" id=\"login-email\"><br />\n" +
-        "          <input type=\"password\" onkeydown=\"hideLoginError()\" placeholder=\"Password\" class=\"input\" id=\"login-pass\"><br />\n" +
-        "          <div class=\"btn\" onclick=\"login()\">Log In</div>\n" +
-        "          <div class=\"loader\"></div>\n" +
-        "          <div id=\"login_error\"></div>\n" +
-        "          <div id=\"forgot_pass\"><span ><a href=\"#\">Forgot Username or Password</a></span> </div>\n" +
-        "        </div>\n" +
-        "        <div class=\"signup-form\">\n" +
-        "          <input type=\"text\" onkeydown=\"emailSignOnChange()\" placeholder=\"Your Email Address\" class=\"input\" id=\"signup-email\"><br />\n" +
-        "          <input type=\"text\" placeholder=\"Your Full Name\" class=\"input\" id=\"signup-user\"><br />\n" +
-        "          <input type=\"password\" onkeydown=\"passSignOnChange()\" placeholder=\"Choose a Password\" class=\"input\" id=\"signup-pass\"><br />\n" +
-        "          <div id=\"pass_tip\">A valid password is at least 8 characters in length!</div>\n" +
-        "          <div class=\"btn\" onclick=\"signup()\">Create Account</div>\n" +
-        "          <div id=\"pass_error\"></div>\n" +
-        "          <div class=\"loader\"></div>\n" +
-        "        </div>";
+        "            <div class=\"login-form\">\n" +
+        "              <input type=\"text\" onkeydown=\"hideLoginError()\" placeholder=\"Email\" class=\"input\" id=\"login-email\"><br />\n" +
+        "              <input type=\"password\" onkeydown=\"hideLoginError()\" placeholder=\"Password\" class=\"input\" id=\"login-pass\"><br />\n" +
+        "              <div class=\"btn\" onclick=\"login()\">Log In</div>\n" +
+        "              <a id=\"google-button\" class=\"btn btn-block btn-social btn-google\" onclick=\"googleSignIn()\">\n" +
+        "                <i class=\"fa fa-google\"></i> Sign in with Google\n" +
+        "              </a>\n" +
+        "              <div class=\"loader\"></div>\n" +
+        "              <div id=\"login_error\"></div>\n" +
+        "              <div id=\"forgot_pass\"><span ><a href=\"#\">Forgot Username or Password</a></span> </div>\n" +
+        "            </div>\n" +
+        "            <div class=\"signup-form\">\n" +
+        "              <input type=\"text\" onkeydown=\"emailSignOnChange()\" placeholder=\"Your Email Address\" class=\"input\" id=\"signup-email\"><br />\n" +
+        "              <input type=\"text\" placeholder=\"Your Full Name\" class=\"input\" id=\"signup-user\"><br />\n" +
+        "              <input type=\"password\" onkeydown=\"passSignOnChange()\" placeholder=\"Choose a Password\" class=\"input\" id=\"signup-pass\"><br />\n" +
+        "              <div id=\"pass_tip\">A valid password is at least 8 characters in length!</div>\n" +
+        "              <div class=\"btn\" onclick=\"signup()\">Create Account</div>\n" +
+        "              <div id=\"pass_error\"></div>\n" +
+        "              <div class=\"loader\"></div>\n" +
+        "            </div>\n" +
+        "            <div id=\"app-warning\"></div>";
     document.getElementById("app").innerHTML = block;
     $(".signup-form").hide();
     $(".loader").hide();
@@ -80,23 +83,8 @@ function loadLogin(){
 }
 function loadBluetooth() {
     let block = "    <div id=\"bluetooth-scan\">\n" +
-        "        <div id=\"bluetooth-header\"> Bluetooth - Scan for Devices</div>\n" +
-        "        <table class=\"table\">\n" +
-        "            <thead class=\"thead-dark\">\n" +
-        "            <tr>\n" +
-        "                <th scope=\"col\">#</th>\n" +
-        "                <th scope=\"col\">Profile</th>\n" +
-        "                <th scope=\"col\"></th>\n" +
-        "            </tr>\n" +
-        "            </thead>\n" +
-        "            <tbody>\n" +
-        "            <tr>\n" +
-        "                <th scope=\"row\">1</th>\n" +
-        "                <td>Mark</td>\n" +
-        "                <td>Otto</td>\n" +
-        "            </tr>\n" +
-        "            </tbody>\n" +
-        "        </table>\n" +
+        "        <div id=\"bluetooth-header\">Bluetooth</div>" +
+        "        <button type=\"button\" class=\"btn btn-secondary btn-lg\" id=\"bluetooth-scan\" onclick=\"scanDevices()\">Scan for Devices</button>" +
         "        <button type=\"button\" class=\"btn btn-secondary btn-lg\" id=\"bluetooth-return\" onclick=\"loadMenu()\">Back to Menu</button>\n" +
         "    </div>";
     document.getElementById("app").innerHTML = block;

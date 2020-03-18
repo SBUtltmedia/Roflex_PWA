@@ -22,6 +22,13 @@ $(".signup").click(function(){
 $(".btn").click(function(){
     $(".input").val("");
 });
+
+let user = firebase.auth().currentUser;
+if(user) {
+    loadLogin();
+} else {
+    console.log("No local user detected. Please login!");
+}
 function hideLoginError() {
     $("#login_error").hide();
 }
@@ -51,10 +58,4 @@ function passSignOnChange() {
     } else {
         $("#pass_tip").show();
     }
-}
-let user = firebase.auth().currentUser;
-if(user) {
-    loadLogin();
-} else {
-    console.log("No local user detected. Please login!");
 }
