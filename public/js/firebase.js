@@ -140,6 +140,7 @@ function signup() {
     }
 }
 function signout() {
+    console.log("Attempting to signout");
     firebase.auth().signOut().then(function() {
         loadLogin();
         console.log("User has signed out successfully");
