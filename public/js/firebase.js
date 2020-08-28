@@ -1,15 +1,25 @@
 // Your web app's Firebase configuration
-const firebaseConfig = {
-    apiKey: "AIzaSyDQdQmLlxQlGbTKOPq8ZrjJyIwz7F7n3IY",
-    authDomain: "roflex-d529d.firebaseapp.com",
-    databaseURL: "https://roflex-d529d.firebaseio.com",
-    projectId: "roflex-d529d",
-    storageBucket: "roflex-d529d.appspot.com",
-    messagingSenderId: "184821631971",
-    appId: "1:184821631971:web:ea0f73ce7b2459dbde6ed6",
-    measurementId: "G-7E8DF98YB1"
-};
+// const firebaseConfig = {
+//     apiKey: "AIzaSyDQdQmLlxQlGbTKOPq8ZrjJyIwz7F7n3IY",
+//     authDomain: "roflex-d529d.firebaseapp.com",
+//     databaseURL: "https://roflex-d529d.firebaseio.com",
+//     projectId: "roflex-d529d",
+//     storageBucket: "roflex-d529d.appspot.com",
+//     messagingSenderId: "184821631971",
+//     appId: "1:184821631971:web:ea0f73ce7b2459dbde6ed6",
+//     measurementId: "G-7E8DF98YB1"
+// };
 // Initialize Firebase
+const firebaseConfig = {
+    apiKey: "AIzaSyATYwBxXaLvg135M397c1txQ0oh2V2j8wA",
+    authDomain: "roflexpwa.firebaseapp.com",
+    databaseURL: "https://roflexpwa.firebaseio.com",
+    projectId: "roflexpwa",
+    storageBucket: "roflexpwa.appspot.com",
+    messagingSenderId: "111760921764",
+    appId: "1:111760921764:web:519054b8f348d7387b4231",
+    measurementId: "G-W7XDL51KHG"
+  };
 firebase.initializeApp(firebaseConfig);
 firebase.analytics();
 let provider = new firebase.auth.GoogleAuthProvider();
